@@ -1,0 +1,31 @@
+content:
+  min_words: 800
+  max_words: 1500
+  tone: "informative and helpful"
+  include_sections:
+    - introduction
+    - main_content
+    - conclusion
+    - call_to_action
+
+seo:
+  meta_description_length: 160
+  keywords_per_article: 5
+  internal_links: 2
+  
+monetization:
+  affiliate_link_density: 0.02  # 2% of content
+  ad_placeholder: true
+  cta_enabled: true
+
+scheduling:
+  posts_per_day: 3
+  publish_times:
+    - "09:00"
+    - "14:00"
+    - "19:00"
+
+output:
+  format: "markdown"
+  save_path: "generated_content"
+  images_path: "generated_content/images"
