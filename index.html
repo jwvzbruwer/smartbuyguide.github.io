@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Passive Income Blog - Passive Income Blog</title>
+    <title>My Passive Income Blog - Smart Product Recommendations</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #ec4899;
+            --primary: #7c3aed;
+            --primary-light: #a78bfa;
+            --accent: #06b6d4;
+            --accent-bright: #22d3ee;
             --dark: #0f172a;
             --gray: #64748b;
-            --light-gray: #f1f5f9;
+            --light: #f8fafc;
             --white: #ffffff;
         }
         
@@ -24,73 +25,166 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.7; 
             color: var(--dark);
-            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+            background: #0f172a;
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Animated gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            z-index: -1;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
         }
         
         /* Hero Header */
         header { 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             color: white; 
-            padding: 80px 20px 100px; 
+            padding: 120px 20px 140px; 
             text-align: center;
             position: relative;
             overflow: hidden;
         }
         
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.3;
+        h1 { 
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 900;
+            margin-bottom: 24px;
+            position: relative;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #fff 0%, #e0e7ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideUp 0.8s ease-out;
         }
         
-        h1 { 
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            margin-bottom: 20px;
-            position: relative;
-            letter-spacing: -0.02em;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .tagline { 
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
             opacity: 0.95;
             font-weight: 400;
             position: relative;
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+        
+        /* CTA Button */
+        .cta-section {
+            margin-top: 40px;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
         }
         
         .container { 
-            max-width: 1200px; 
-            margin: -60px auto 0; 
-            padding: 0 20px 60px;
+            max-width: 1400px; 
+            margin: -80px auto 0; 
+            padding: 0 20px 100px;
             position: relative;
             z-index: 1;
+        }
+        
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
         }
         
         /* Modern Grid */
         .posts-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
-            gap: 30px; 
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); 
+            gap: 32px; 
         }
         
-        /* Sleek Card Design */
+        /* Glassmorphism Card Design */
         .post-card {
-            background: var(--white);
-            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
         
         .post-card::before {
@@ -100,27 +194,28 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-        
-        .post-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            background: linear-gradient(90deg, var(--accent-bright), var(--primary-light));
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
         .post-card:hover::before {
-            transform: scaleX(1);
+            opacity: 1;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.2);
+            border-color: rgba(255, 255, 255, 0.4);
         }
         
         .post-content { 
-            padding: 30px; 
+            padding: 36px; 
         }
         
         .post-title { 
-            color: var(--dark);
-            font-size: 1.5em; 
+            color: white;
+            font-size: 1.6em; 
             margin-bottom: 12px;
             text-decoration: none;
             font-weight: 700;
@@ -130,58 +225,77 @@
         }
         
         .post-title:hover { 
-            color: var(--primary);
+            color: var(--accent-bright);
         }
         
         .post-excerpt { 
-            color: var(--gray);
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 24px;
+            font-size: 1rem;
+            line-height: 1.7;
         }
         
         .post-meta { 
-            color: #94a3b8;
-            font-size: 0.85em;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9em;
             font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .post-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
         
         .read-more {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: var(--primary);
+            color: white;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 24px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 15px;
             font-size: 0.95rem;
-            transition: gap 0.3s;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .read-more:hover {
+            background: rgba(255, 255, 255, 0.25);
             gap: 12px;
+            transform: translateX(4px);
         }
         
         .read-more::after {
             content: '→';
             font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+        
+        .read-more:hover::after {
+            transform: translateX(4px);
         }
         
         /* Modern Footer */
         footer {
-            background: var(--dark);
-            color: var(--light-gray);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            color: rgba(255, 255, 255, 0.8);
             text-align: center;
-            padding: 40px 20px;
-            margin-top: 80px;
+            padding: 50px 20px;
+            margin-top: 100px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
         
         footer p {
-            opacity: 0.8;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
         
         /* Responsive */
@@ -190,83 +304,107 @@
                 grid-template-columns: 1fr;
             }
             header {
-                padding: 60px 20px 80px;
+                padding: 80px 20px 100px;
             }
             .container {
-                margin-top: -40px;
+                margin-top: -60px;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Floating particles effect -->
+    <div class="particles">
+        <div class="particle" style="width: 10px; height: 10px; left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="width: 6px; height: 6px; left: 20%; animation-delay: 2s;"></div>
+        <div class="particle" style="width: 8px; height: 8px; left: 30%; animation-delay: 4s;"></div>
+        <div class="particle" style="width: 12px; height: 12px; left: 40%; animation-delay: 1s;"></div>
+        <div class="particle" style="width: 7px; height: 7px; left: 50%; animation-delay: 3s;"></div>
+        <div class="particle" style="width: 9px; height: 9px; left: 60%; animation-delay: 5s;"></div>
+        <div class="particle" style="width: 11px; height: 11px; left: 70%; animation-delay: 2.5s;"></div>
+        <div class="particle" style="width: 6px; height: 6px; left: 80%; animation-delay: 4.5s;"></div>
+        <div class="particle" style="width: 8px; height: 8px; left: 90%; animation-delay: 1.5s;"></div>
+    </div>
+    
     <header>
-        <h1>My Passive Income Blog</h1>
-        <p class="tagline">Expert Reviews & Smart Shopping Guides for Modern Living</p>
+        <h1>✨ My Passive Income Blog</h1>
+        <p class="tagline">Discover the best products and tech that actually matter. Expert reviews, honest recommendations, and smart buying guides.</p>
+        <div class="cta-section">
+            <a href="#articles" class="cta-button">Explore Latest Reviews ↓</a>
+        </div>
     </header>
     
     <div class="container">
+        <div class="section-header" id="articles">
+            <h2 class="section-title">Latest Product Guides</h2>
+            <p class="section-subtitle">Curated recommendations to help you buy smarter</p>
+        </div>
+        
         <div class="posts-grid">
             
             <div class="post-card">
                 <div class="post-content">
-                    <a href="20251116-154734-top-wireless-earbuds-under-100.html" class="post-title">Top Wireless Earbuds Under $100</a>
-                    <p class="post-excerpt">Looking for quality wireless earbuds that won't empty your wallet? Our list of the top wireless earbuds under $100 highlights affordable options that deliver impressive sound and comfort. Explore your choices and enjoy music on the go!</p>
-                    <div class="post-meta">2025-11-16</div>
-                    <a href="20251116-154734-top-wireless-earbuds-under-100.html" class="read-more">Read More →</a>
+                    <div class="post-meta">
+                        <span>📅 2025-11-16</span>
+                        <span>⏱️ 5 min read</span>
+                    </div>
+                    <a href="20251116-164036-best-portable-chargers-for-travel.html" class="post-title">Best Portable Chargers for Travel</a>
+                    <p class="post-excerpt">Traveling can drain your devices quickly, but with the right portable charger, you can ensure they stay powered throughout your journey. Our guide highlights the best portable chargers that combine efficiency, portability, and reliability, making them essential travel companions. Stay charged and connected, no matter where your adventures take you!</p>
+                    <a href="20251116-164036-best-portable-chargers-for-travel.html" class="read-more">Read Full Guide</a>
                 </div>
             </div>
             
             <div class="post-card">
                 <div class="post-content">
-                    <a href="20251116-152513-best-portable-chargers-for-travel.html" class="post-title">Best Portable Chargers for Travel</a>
-                    <p class="post-excerpt">Traveling can drain your devices quickly, making a reliable portable charger essential. Our guide showcases the top portable chargers that combine efficiency and convenience, ensuring you're powered up for every journey. Don't let a dead battery ruin your adventure!</p>
-                    <div class="post-meta">2025-11-16</div>
-                    <a href="20251116-152513-best-portable-chargers-for-travel.html" class="read-more">Read More →</a>
-                </div>
-            </div>
-            
-            <div class="post-card">
-                <div class="post-content">
-                    <a href="20251116-152508-smart-watches-vs-fitness-bands.html" class="post-title">Smart Watches vs Fitness Bands</a>
-                    <p class="post-excerpt">In today's tech-savvy world, both smart watches and fitness bands offer unique features tailored to different needs. This article explores their functionalities, benefits, and which device might be the best fit for your lifestyle and fitness ambitions.</p>
-                    <div class="post-meta">2025-11-16</div>
-                    <a href="20251116-152508-smart-watches-vs-fitness-bands.html" class="read-more">Read More →</a>
-                </div>
-            </div>
-            
-            <div class="post-card">
-                <div class="post-content">
+                    <div class="post-meta">
+                        <span>📅 2025-11-16</span>
+                        <span>⏱️ 5 min read</span>
+                    </div>
                     <a href="20251116-144722-best-productivity-apps-for-remote-work.html" class="post-title">Best Productivity Apps for Remote Work</a>
                     <p class="post-excerpt">In today’s world, remote work has become the norm, and having the right tools is essential for success. This article explores the best productivity apps that can enhance your efficiency, streamline communication, and improve project management while working from home. Discover the ultimate solutions for staying organized and connected with your team.</p>
-                    <div class="post-meta">2025-11-16</div>
-                    <a href="20251116-144722-best-productivity-apps-for-remote-work.html" class="read-more">Read More →</a>
+                    <a href="20251116-144722-best-productivity-apps-for-remote-work.html" class="read-more">Read Full Guide</a>
                 </div>
             </div>
             
             <div class="post-card">
                 <div class="post-content">
+                    <div class="post-meta">
+                        <span>📅 2025-01-17</span>
+                        <span>⏱️ 5 min read</span>
+                    </div>
                     <a href="demo-03-smart-home-devices-worth-buyin.html" class="post-title">Smart Home Devices Worth Buying in 2025</a>
                     <p class="post-excerpt">Transform your home with these must-have smart devices. Our guide covers the best options for every budget.</p>
-                    <div class="post-meta">2025-01-17</div>
-                    <a href="demo-03-smart-home-devices-worth-buyin.html" class="read-more">Read More →</a>
+                    <a href="demo-03-smart-home-devices-worth-buyin.html" class="read-more">Read Full Guide</a>
                 </div>
             </div>
             
             <div class="post-card">
                 <div class="post-content">
+                    <div class="post-meta">
+                        <span>📅 2025-01-16</span>
+                        <span>⏱️ 5 min read</span>
+                    </div>
                     <a href="demo-02-top-wireless-earbuds-under-$10.html" class="post-title">Top Wireless Earbuds Under $100</a>
                     <p class="post-excerpt">Discover high-quality wireless earbuds that won't break the bank. We review the best options under $100.</p>
-                    <div class="post-meta">2025-01-16</div>
-                    <a href="demo-02-top-wireless-earbuds-under-$10.html" class="read-more">Read More →</a>
+                    <a href="demo-02-top-wireless-earbuds-under-$10.html" class="read-more">Read Full Guide</a>
                 </div>
             </div>
             
             <div class="post-card">
                 <div class="post-content">
+                    <div class="post-meta">
+                        <span>📅 2025-01-15</span>
+                        <span>⏱️ 5 min read</span>
+                    </div>
                     <a href="demo-01-best-budget-laptops-for-studen.html" class="post-title">Best Budget Laptops for Students 2025</a>
                     <p class="post-excerpt">Finding the perfect laptop for college doesn't have to break the bank. Check out our top picks for budget-friendly student laptops in 2025.</p>
-                    <div class="post-meta">2025-01-15</div>
-                    <a href="demo-01-best-budget-laptops-for-studen.html" class="read-more">Read More →</a>
+                    <a href="demo-01-best-budget-laptops-for-studen.html" class="read-more">Read Full Guide</a>
                 </div>
             </div>
             
